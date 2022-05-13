@@ -34,10 +34,4 @@ public class MathController {
     public String divide(@PathVariable double num1, @PathVariable Double num2){
         return  num1 + " / " + num2 + " = " + (num1/num2);
     }
-
-
-
-
-
-
 }
