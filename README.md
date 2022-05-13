@@ -1,4 +1,4 @@
-# spring-blob
+# spring-blog
 
 
 Starting Date: May 13, 2022 - Mon
