@@ -13,4 +13,31 @@ public class MathController {
     public String addOneHundred(@PathVariable int number){
         return number + " add 100 = " + (100 + number);
     }
+
+    // Subtract
+    @RequestMapping(path = "/subtract/{num1}/from/{num2}",  method = RequestMethod.GET)
+    @ResponseBody
+    public String subtraction(@PathVariable int num1, @PathVariable int num2){
+        return num2 + " - "+num1+" = " + (num2 - num1);
+    }
+
+    //Multiply
+    @RequestMapping(path = "/multiply/{num1}/and/{num2}", method = RequestMethod.GET)
+    @ResponseBody
+    public String multiplying(@PathVariable int num1, @PathVariable int num2){
+        return num1 + " * " + num2 +" = " + (num1*num2);
+    }
+
+    //Divide
+    @RequestMapping(path="/divide/{num1}/by/{num2}", method = RequestMethod.GET)
+    @ResponseBody
+    public String divide(@PathVariable int num1, @PathVariable int num2){
+        return  num1 + " / " + num2 + " = " + (num1/num2);
+    }
+
+
+
+
+
+
 }
