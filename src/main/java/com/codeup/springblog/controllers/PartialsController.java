@@ -13,6 +13,4 @@ public class PartialsController {
     public String showPartialsTest(){
         return "views-lecture/partials-test";
     }
-
-
 }
