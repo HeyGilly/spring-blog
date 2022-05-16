@@ -1,17 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta charset="utf-8">
-    <meta name="creator" content="Nicholas 'Gilly' Gilmore">
-    <meta name="subject" content="Subject">
-    <meta name="description" content=" description ">
-    <title>Partials Test</title>
-</head>
+<head th:replace="/partials/partials.html :: head ('Partials-Test')"></head>
 <body>
 
+<nav th:replace="partials/partials.html :: navbar"></nav>
 
-    <div th:replace="partials/partials.html :: header"></div>
+<div th:replace="partials/partials.html :: hello"></div>
+
+
+<footer th:replace="partials/partials.html :: footer"></footer>
 
 </body>
 </html>
