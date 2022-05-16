@@ -10,5 +10,6 @@ Ending Date:
 * [X] Introduction & Set-up
 * [ ] Fundamentals
     * [ ] Controllers
+    * [ ] Views
 
 
