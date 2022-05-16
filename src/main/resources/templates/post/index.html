@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/partials/partials.html :: head ('Post')"></head>
+<body>
+<!--Navigation-->
+<nav th:replace="partials/partials.html :: navbar"></nav>
+
+
+
+<h1 class="text-center mt-5">
+    Welcome to the post page!
+</h1>
+
+
+<div class="h-auto d-flex justify-content-around h-50 mt-5">
+    <section th:each="post : ${allPosts}" class="w-25 h-25 p-3" style="background:#fffaf0;">
+        <h5 th:text="${post.title}" class="text-dark">Title</h5>
+        <p th:text="${post.body}" class="text-dark">Body Text</p>
+    </section>
+</div>
+
+
+<!--Footer-->
+<footer th:replace="partials/partials.html :: footer"></footer>
+</body>
+</html>
