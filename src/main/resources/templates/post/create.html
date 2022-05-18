@@ -2,11 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymelead.org">
 <head th:replace="partials/partials.html :: head ('Create a post')"></head>
 <body>
+<nav th:replace="partials/partials.html :: nav"></nav>
 
 <h2>Create a post</h2>
 <form action="/posts/create" method="post">
 <label for="title">Title</label>
-<input type="text" name="text" id="title">
+<input type="text" name="title" id="title">
 <label for="body">Main Text:</label>
 <textarea name="body" id="body"></textarea><br>
 <input type="submit" value="Post">

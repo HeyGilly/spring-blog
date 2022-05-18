@@ -14,15 +14,14 @@ import java.util.List;
 public class PostController {
 
 
-    private PostRepository postsDao;
+    private final PostRepository postsDao;
 
     public PostController(PostRepository postsDao){
         this.postsDao = postsDao;
     }
 
-    // going to redirect you to the index for this post page.
-    @GetMapping
-    public String allPosts(Model model) {
+
+    public List<Post> generatePosts(){
         List<Post> allPosts = new ArrayList<>();
         Post post1 = new Post(1, "First Post", "This is going to be the body");
         Post post2 = new Post(2, "Second Post", "This is going to be the body");
@@ -30,23 +29,41 @@ public class PostController {
         allPosts.add(post1);
         allPosts.add(post2);
         allPosts.add(post3);
-        model.addAttribute("allPosts", allPosts);
+        return allPosts;
+    }
+
+
+
+    // going to redirect you to the index for this post page.
+    @GetMapping
+    public String allPosts(Model model) {
+            List<Post> allPosts = generatePosts();
+            model.addAttribute("allPosts", allPosts);
         return "post/index";
     }
 
     @GetMapping("/{id}")
-    public String onePosts(@PathVariable long id, Model model){
-        Post post1 = new Post(1, "First Post", "This is going to be the body");
-        model.addAttribute("id", id);
-        model.addAttribute("post", post1);
+    public String onePost(@PathVariable long id, Model model){
+        List<Post> allPosts = generatePosts();
+        Post post = null;
+        for (int i = 0; i<allPosts.size(); i++){
+            if(allPosts.get(i).getId() == id){
+                post = allPosts.get(i);
+            }
+        }
+        model.addAttribute("post", post);
         return "post/show";
     }
 
-@GetMapping("/create")
+
+    @GetMapping("/create")
     public String createPost(){
-        return"post/create";
+        return"/post/create";
 }
 
+    @PostMapping("/create")
+    @ResponseBody
+    public String submitPost(){return "You just created a post";}
 
 
 }
