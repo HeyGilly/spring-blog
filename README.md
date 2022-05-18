@@ -8,8 +8,10 @@ Ending Date:
 
 ### Roadmap
 * [X] Introduction & Set-up
-* [ ] Fundamentals
-    * [ ] Controllers
-    * [ ] Views
+* [X] Fundamentals
+    * [X] Controllers
+    * [X] Views
+    * [ ] Repositories + JPA
+
 
 
