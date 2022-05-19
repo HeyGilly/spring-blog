@@ -8,24 +8,23 @@ public class Post {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(nullable = false, length = 50)
     private long id;
-    @Column(name="Blog_Title", length = 50)
+    @Column(name="Blog_Title",nullable = false, length = 50)
     private String title;
-    @Column(name = "Blog_Body", columnDefinition = "TEXT")
+    @Column(name = "Blog_Body",nullable = false,columnDefinition = "TEXT")
     private String body;
 
-    // Constructor With and WIthout elements
+    // Constructor With and Without elements
     public Post() {
     }
 
-    public Post(long id, String title, String body) {
-        this.id = id;
+    public Post(String title, String body) {
         this.title = title;
         this.body = body;
     }
 
-    public Post(String title, String body) {
+    public Post(long id, String title, String body) {
+        this.id = id;
         this.title = title;
         this.body = body;
     }

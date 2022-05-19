@@ -13,34 +13,35 @@ import java.util.List;
 @RequestMapping("/post")
 public class PostController {
 
-
-    private final PostRepository postsDao;
+    private PostRepository postsDao;
 
     public PostController(PostRepository postsDao){
         this.postsDao = postsDao;
     }
 
 
-    // going to redirect you to the index for this post page.
     @GetMapping
     public String allPosts(Model model) {
+            // This is array of all post, findAll post does it all
             List<Post> allPosts = postsDao.findAll();
             model.addAttribute("allPosts", allPosts);
         return "post/index";
     }
 
+    // Allow us to see our form
     @GetMapping("/create")
     public String createPost(){
         return"/post/create";
 }
 
     @PostMapping("/create")
-    // action formwas incorrect
-    // no constructor
-
+    // To pick up parameters from the server side, we need to Request Param by their 'name'
     public String submitPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
+        // using the title, body constructor (Post.java) to create a new post object.
         Post post = new Post(title, body);
+//        using postDao to use a built-in method "save" post.
         postsDao.save(post);
+    // going to redirect you to the index for this post page.
         return "redirect:/post";
     }
 
