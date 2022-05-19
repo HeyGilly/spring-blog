@@ -11,7 +11,8 @@ Ending Date:
 * [X] Fundamentals
     * [X] Controllers
     * [X] Views
-    * [ ] Repositories + JPA
+    * [X] Repositories + JPA
+    * [ ] Relationships
 
 
 
