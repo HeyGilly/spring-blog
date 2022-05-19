@@ -45,6 +45,15 @@ public class PostController {
         return "redirect:/post";
     }
 
+    @GetMapping("/{id}")
+    public String onePost(@PathVariable long id, Model model){
+        Post post = postsDao.findById(id);
+        model.addAttribute("post", post);
+        return "post/show";
+    }
+
+
+
 ////---------- OLD Material
 
     //    public List<Post> generatePosts(){
