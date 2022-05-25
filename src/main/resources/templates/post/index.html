@@ -15,7 +15,12 @@
 <div class="h-auto d-flex justify-content-around h-50 mt-5">
     <section th:each="post : ${allPosts}" class="w-25 h-25 p-3" style="background:#fffaf0;">
         <h5 th:text="${post.title}" class="text-dark">Title</h5>
+        <span>By <span th:text="${post.user.email}"></span></span>
         <p th:text="${post.body}" class="text-dark">Body Text</p>
+        <a th:href="@{'/post/' + ${post.id} + '/edit'}">Edit Post</a>
+        <form th:action="@{'/post/' + ${post.id} + '/delete'}" th:method="POST">
+            <button>Delete Post</button>
+        </form>
     </section>
 </div>
 

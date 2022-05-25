@@ -1,7 +1,10 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repository.PostRepository;
+import com.codeup.springblog.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,6 +17,15 @@ import java.util.List;
 public class PostController {
 
     private PostRepository postsDao;
+    //Used for Relationship
+    private UserRepository usersDao;
+
+    // when constructor is added, not matching constuctor for autowiring
+    @Autowired
+    public PostController(PostRepository postsDao, UserRepository usersDao) {
+        this.postsDao =  postsDao;
+        this.usersDao = usersDao;
+    }
 
     public PostController(PostRepository postsDao){
         this.postsDao = postsDao;
@@ -39,6 +51,9 @@ public class PostController {
     public String submitPost(@RequestParam(name = "title") String title, @RequestParam(name = "body") String body){
         // using the title, body constructor (Post.java) to create a new post object.
         Post post = new Post(title, body);
+        // Exercise
+        User author = usersDao.getById(1l);
+        post.setUser(author);
 //        using postDao to use a built-in method "save" post.
         postsDao.save(post);
     // going to redirect you to the index for this post page.
