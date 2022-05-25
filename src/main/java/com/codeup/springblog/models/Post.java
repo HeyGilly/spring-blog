@@ -14,6 +14,14 @@ public class Post {
     @Column(name = "Blog_Body",nullable = false,columnDefinition = "TEXT")
     private String body;
 
+//    @OneToMany(cascade = CascadeType.ALL, mappedBy = "post")
+//    private List<PostImages> images;
+
+        @ManyToOne
+        @JoinColumn(name = "user_id")
+        private User user;
+
+
     // Constructor With and Without elements
     public Post() {
     }
@@ -51,5 +59,14 @@ public class Post {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
