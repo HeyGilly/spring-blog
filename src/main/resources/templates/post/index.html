@@ -11,7 +11,6 @@
     Welcome to the post page!
 </h1>
 
-
 <div class="h-auto d-flex justify-content-around h-50 mt-5">
     <section th:each="post : ${allPosts}" class="w-25 h-25 p-3" style="background:#fffaf0;">
         <h5 th:text="${post.title}" class="text-dark">Title</h5>
